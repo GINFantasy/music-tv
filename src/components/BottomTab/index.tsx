@@ -4,13 +4,12 @@
  * @Autor: GuluGuluu
  * @Date: 2022-11-02 22:33:01
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-11-03 01:24:26
+ * @LastEditTime: 2022-11-30 16:43:14
  */
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Home from '../../pages/Home';
-import User from '../../pages/User';
-import React from 'react';
+import router from '../../routes';
 import {ColorValue} from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -40,8 +39,13 @@ export default function BottomTab() {
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
       })}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="User" component={User} />
+      {router.map((route: any) => (
+        <Tab.Screen
+          key={route.name}
+          name={route.name}
+          component={route.element}
+        />
+      ))}
     </Tab.Navigator>
   );
 }
