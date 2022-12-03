@@ -4,16 +4,28 @@
  * @Autor: GuluGuluu
  * @Date: 2022-10-17 00:50:45
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-11-30 16:41:00
+ * @LastEditTime: 2022-12-04 00:43:43
  */
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import BottomTab from './src/components/BottomTab';
-
+import Navigation from './src/components/Navigation';
+import {ThemeProvider, createTheme} from '@rneui/themed';
+// @ts-ignore
+global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest;
+const theme = createTheme({
+  lightColors: {
+    primary: '#71c9ce',
+    background: '#fff',
+  },
+  darkColors: {
+    primary: '#71c9ce',
+    background: '#282c34',
+  },
+  mode: 'dark',
+});
 export default function App() {
   return (
-    <NavigationContainer>
-      <BottomTab />
-    </NavigationContainer>
+    <ThemeProvider theme={theme}>
+      <Navigation />
+    </ThemeProvider>
   );
 }

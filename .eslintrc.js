@@ -4,7 +4,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-10-17 00:50:45
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-11-24 02:09:27
+ * @LastEditTime: 2022-12-03 22:11:12
  */
 module.exports = {
   root: true,
@@ -19,6 +19,8 @@ module.exports = {
         'no-shadow': 'off',
         'no-undef': 'off',
         'linebreak-style': [0, 'error', 'windows'],
+        'no-inline-styles': 0,
+        'no-sparse-arrays': 0,
       },
     },
   ],

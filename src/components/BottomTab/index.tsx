@@ -4,7 +4,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-11-02 22:33:01
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-11-30 16:43:14
+ * @LastEditTime: 2022-12-03 16:36:00
  */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -36,7 +36,7 @@ export default function BottomTab() {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: '#71c9ce',
         tabBarInactiveTintColor: 'gray',
       })}>
       {router.map((route: any) => (
