@@ -4,7 +4,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-10-17 00:50:45
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-03 22:11:12
+ * @LastEditTime: 2022-12-04 21:38:00
  */
 module.exports = {
   root: true,
@@ -15,12 +15,13 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx', '*.jsx', '*.js'],
       rules: {
-        '@typescript-eslint/no-shadow': ['error'],
+        '@typescript-eslint/no-shadow': 'off',
         'no-shadow': 'off',
         'no-undef': 'off',
         'linebreak-style': [0, 'error', 'windows'],
         'no-inline-styles': 0,
         'no-sparse-arrays': 0,
+        'exhaustive-deps': 0,
       },
     },
   ],

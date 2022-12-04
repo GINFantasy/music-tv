@@ -3,7 +3,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-08-14 01:33:01
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-04 00:47:51
+ * @LastEditTime: 2022-12-04 21:11:00
  */
 import axios from 'axios';
 import serverConfig from './config';
@@ -28,13 +28,10 @@ const Request = axios.create({
 
 // 创建请求拦截
 Request.interceptors.request.use(
-  (config: any) => {
+  async (config: any) => {
     // 如果开启 token 认证
-    if (serverConfig.useTokenAuthorization) {
-      Store.getItem(TOKEN_KEY).then(token => {
-        config.headers.Authorization = `Bearer ${token} || ''}`;
-      });
-    }
+    const token = await Store.getItem(TOKEN_KEY);
+    config.headers.Authorization = `Bearer ${token || ''}`;
     // 设置请求头
     if (!config.headers['content-type']) {
       // 如果没有设置请求头
@@ -109,6 +106,7 @@ Request.interceptors.response.use(
           break;
       }
     }
+    console.log('axios-error', error);
     return Promise.reject(message);
   },
 );

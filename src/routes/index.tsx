@@ -3,7 +3,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-11-30 15:31:03
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-11-30 16:42:59
+ * @LastEditTime: 2022-12-04 21:27:05
  */
 
 import Home from '../pages/Home';
@@ -12,12 +12,22 @@ const router = [
   {
     path: '/',
     element: Home,
-    name: 'Home',
+    name: '探索',
+  },
+  {
+    path: '/creation',
+    element: User,
+    name: '创作',
+  },
+  {
+    path: '/dynamic',
+    element: User,
+    name: '动态',
   },
   {
     path: '/user',
     element: User,
-    name: 'User',
+    name: '我的',
   },
 ];
 export default router;

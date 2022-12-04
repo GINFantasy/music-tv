@@ -3,9 +3,9 @@
  * @Autor: GuluGuluu
  * @Date: 2022-12-02 17:12:07
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-03 16:39:21
+ * @LastEditTime: 2022-12-04 18:40:59
  */
-import {useRef, useEffect} from 'react';
+import {useRef, useEffect, EffectCallback} from 'react';
 
 const useMountedRef = () => {
   const mountedRef = useRef(false);
@@ -20,4 +20,9 @@ const useMountedRef = () => {
   return mountedRef;
 };
 
-export {useMountedRef};
+const useMount = (callback: EffectCallback) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useEffect(callback, []);
+};
+
+export {useMountedRef, useMount};
