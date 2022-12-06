@@ -4,7 +4,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-10-17 00:50:45
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-04 21:18:41
+ * @LastEditTime: 2022-12-06 16:03:20
  */
 import React from 'react';
 import Navigation from './src/components/Navigation';
@@ -19,12 +19,14 @@ import {useAsync} from './src/utils/useAsync';
 const theme = createTheme({
   lightColors: {
     primary: '#6d9886',
+    secondary: 'F2E7D5',
     background: '#fff',
     black: '#393e46',
     white: '#f7f7f7',
   },
   darkColors: {
     primary: '#6d9886',
+    secondary: 'F2E7D5',
     background: '#393e46',
     black: '#f7f7f7',
     white: '#393e46',
