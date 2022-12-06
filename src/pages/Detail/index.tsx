@@ -3,40 +3,49 @@
  * @Autor: GuluGuluu
  * @Date: 2022-12-06 16:15:04
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-06 16:29:33
+ * @LastEditTime: 2022-12-06 23:25:34
  */
-import React, {useState} from 'react';
-import {Video} from 'react-native-video';
-import {View, StyleSheet} from 'react-native';
-import {VideoItem} from '../../types';
+import React, {useState, useRef} from 'react';
+import Video from 'react-native-video';
+import {View, StyleSheet, Text} from 'react-native';
 
-export default function Detail(props: {item: VideoItem}) {
-  const {item} = props;
-  const [paused, setPaused] = useState(true);
+export default function Detail({route}) {
+  const [paused, setPaused] = useState(false);
+  const video = useRef();
+  const item = route.params;
   const {videoUrl} = item;
+  console.log(item);
+
   return (
-    <View>
+    <View style={styles.container}>
       <Video
-        ref={ref => (this.Video = ref)}
+        ref={video}
         source={{uri: videoUrl}}
         poster={'url'}
         paused={paused}
         onProgress={({currentTime}) => {}}
         onLoad={({duration}) => {}}
+        onError={e => {
+          console.log(e);
+        }}
         onEnd={() => {}}
         resizeMode="cover"
         posterResizeMode="cover"
         style={styles.backgroundVideo}
       />
+      <View>
+        <Text>123</Text>
+      </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '100%',
+  },
   backgroundVideo: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+    minWidth: '100%',
+    height: 200,
   },
 });

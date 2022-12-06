@@ -4,7 +4,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-11-02 22:42:41
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-06 15:44:28
+ * @LastEditTime: 2022-12-06 21:31:26
  */
 import React, {useState, useMemo, useCallback} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -88,7 +88,7 @@ const testData = [
     createTime: '2022-12-04 20:55:21',
   },
 ];
-export default function Home() {
+export default function Home({navigation}) {
   const {theme} = useTheme();
   const [search, setSearch] = useState('');
   const [data, setData] = useState<VideoItem[]>(testData);
@@ -150,7 +150,7 @@ export default function Home() {
           }
         />
       </View>
-      <VideoList data={data} />
+      <VideoList data={data} navigation={navigation} />
     </View>
   );
 }

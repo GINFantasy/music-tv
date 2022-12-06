@@ -4,50 +4,41 @@
  * @Autor: GuluGuluu
  * @Date: 2022-10-17 00:50:45
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-06 16:03:20
+ * @LastEditTime: 2022-12-06 22:04:56
  */
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import Navigation from './src/components/Navigation';
-import {ThemeProvider, createTheme} from '@rneui/themed';
-import Login from './src/pages/Login';
+import {useTheme} from '@rneui/themed';
 import Dialog from './src/components/Dialog';
-import UserService from './src/service/user.service';
-import {useUser} from './src/utils/reduxHooks';
-import {useMount} from './src/utils';
-import {useAsync} from './src/utils/useAsync';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Layout from './src/pages/Layout';
+import Detail from './src/pages/Detail';
+const Stack = createNativeStackNavigator();
 
-const theme = createTheme({
-  lightColors: {
-    primary: '#6d9886',
-    secondary: 'F2E7D5',
-    background: '#fff',
-    black: '#393e46',
-    white: '#f7f7f7',
-  },
-  darkColors: {
-    primary: '#6d9886',
-    secondary: 'F2E7D5',
-    background: '#393e46',
-    black: '#f7f7f7',
-    white: '#393e46',
-  },
-  mode: 'dark',
-});
+const getNavigationThemeFromRenui = theme => {
+  const {mode, colors} = theme;
+  const {primary, background, grey0} = colors;
+  return {
+    dark: mode === 'dark' ? true : false,
+    colors: {
+      primary,
+      background,
+      card: background,
+      text: grey0,
+    },
+  };
+};
 export default function App() {
-  const {user, setUser} = useUser();
-  const {run} = useAsync(undefined, {throwOnError: false});
-  //
-  useMount(() => {
-    try {
-      run(UserService.getInfo()).then(setUser);
-    } catch (error) {
-      console.log('error', error);
-    }
-  });
+  const {theme} = useTheme();
+  const naviTheme = getNavigationThemeFromRenui(theme);
   return (
-    <ThemeProvider theme={theme}>
+    // @ts-ignore
+    <NavigationContainer theme={naviTheme}>
       <Dialog />
-      {user ? <Navigation /> : <Login />}
-    </ThemeProvider>
+      <Stack.Navigator initialRouteName="Index">
+        <Stack.Screen component={Layout} name="Index" />
+        <Stack.Screen component={Detail} name="Detail" />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

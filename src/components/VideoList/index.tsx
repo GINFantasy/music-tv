@@ -3,7 +3,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-12-05 15:47:05
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-06 16:03:52
+ * @LastEditTime: 2022-12-06 22:11:22
  */
 import {useTheme, Avatar, Image} from '@rneui/themed';
 import {VideoItem} from '../../types';
@@ -16,9 +16,8 @@ import {
   ActivityIndicator,
   Text,
 } from 'react-native';
-export default function VideoList(props: {data: VideoItem[]}) {
+export default function VideoList({data, navigation}) {
   const {theme} = useTheme();
-  const {data} = props;
   const {primary, black, grey2, searchBg} = theme.colors;
   const styles = useMemo(
     () =>
@@ -84,7 +83,11 @@ export default function VideoList(props: {data: VideoItem[]}) {
       const {item} = props;
       const {id, videoCoverUrl, videoViews, videoTitle, createTime} = item;
       return (
-        <View style={styles.videoItem}>
+        <View
+          onTouchEnd={() => {
+            navigation.navigate('Detail', item);
+          }}
+          style={styles.videoItem}>
           <View style={styles.imageWrapper}>
             <Image
               containerStyle={styles.imageContainer}
@@ -129,7 +132,7 @@ export default function VideoList(props: {data: VideoItem[]}) {
         </View>
       );
     },
-    [primary, styles],
+    [primary, styles, navigation],
   );
 
   return (
