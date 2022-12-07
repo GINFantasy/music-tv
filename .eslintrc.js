@@ -4,7 +4,7 @@
  * @Autor: GuluGuluu
  * @Date: 2022-10-17 00:50:45
  * @LastEditors: GuluGuluu
- * @LastEditTime: 2022-12-06 16:29:19
+ * @LastEditTime: 2022-12-07 17:19:36
  */
 module.exports = {
   root: true,
@@ -19,10 +19,11 @@ module.exports = {
         'no-shadow': 'off',
         'no-undef': 'off',
         'linebreak-style': [0, 'error', 'windows'],
-        'no-inline-styles': 0,
+        'react-native/no-inline-styles': 0,
         'no-sparse-arrays': 0,
         'exhaustive-deps': 0,
         'no-return-assign': 0,
+        'no-bitwise': 0,
       },
     },
   ],
