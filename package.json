@@ -33,7 +33,8 @@
     "react-native-video": "^5.2.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
-    "react-timer-mixin": "^0.13.4"
+    "react-timer-mixin": "^0.13.4",
+    "recyclerlistview": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
